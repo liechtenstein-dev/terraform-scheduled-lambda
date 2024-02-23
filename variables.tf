@@ -31,9 +31,7 @@ variable "retention_in_days" {
 variable "lambda_environment_variables" {
   description = "Environment variables for the Lambda function"
   type        = map(string)
-  default     = {
-    ACCOUNT_ID = "${data.aws_caller_identity.current.account_id}"
-  }
+  default     = null
 }
 
 variable "schedule_expression" {
