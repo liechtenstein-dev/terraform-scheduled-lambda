@@ -1,8 +1,8 @@
 resource "aws_iam_policy" "lambda_policy" {
-  name        = "${var.env_name}_delete_old_amis_lambda_function"
-  description = "${var.env_name}_delete_old_amis_lambda_function"
+  name        = "${var.env_name}_lambda_policy"
+  description = "${var.env_name} - Lambda Policy"
 
-  policy = <<EOF
+  policy = <<-EOF
     {
     "Version": "2012-10-17",
     "Statement": [
