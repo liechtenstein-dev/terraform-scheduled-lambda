@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 locals {
-  cloud_watch_event_rule_name = concat(var.env_name, "-cloudwatch-event-rule")
+  cloud_watch_event_rule_name = "${var.env_name}-cloudwatch-event-rule"
 }
 
 resource "aws_kms_key" "a" {}

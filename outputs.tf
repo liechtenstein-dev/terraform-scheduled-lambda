@@ -19,7 +19,7 @@ output "lambda_role_name" {
 }
 
 output "lambda_role_policy_arn" {
-  value = aws_iam_role_policy.lambda_policy.arn
+  value = aws_iam_policy.lambda_policy.arn
 }
 
 output "cloudwatch_event_rule_arn" {
