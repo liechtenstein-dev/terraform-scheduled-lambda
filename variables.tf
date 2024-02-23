@@ -13,6 +13,14 @@ variable "env_name" {
   default     = "lambda-test"
 }
 
+variable "lambda_policy" {
+  description = "The policy for the Lambda function"
+  type = string
+  default = <<-EOF
+    "ssm:GetParameter",
+  EOF
+}
+
 variable "function_name" {
   description = "Name of the Lambda function"
   default     = "change_my_name"

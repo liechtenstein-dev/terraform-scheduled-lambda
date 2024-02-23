@@ -16,16 +16,9 @@ resource "aws_iam_policy" "lambda_policy" {
     },
     {
     "Action": [
-    "ec2:DescribeImages",
-    "ec2:DescribeSnapshotAttribute",
-    "ec2:DescribeSnapshots",
-    "ec2:DeleteSnapshot",
-    "ec2:DescribeImages",
-    "ec2:DescribeImageAttribute",
-    "ec2:DeregisterImage",
-    "ec2:DescribeInstances",
-    "kms:ListAliases",
-    "kms:Decrypt"
+      ${var.lambda_policy}
+      "kms:ListAliases",
+      "kms:Decrypt"
     ],
     "Effect": "Allow",
     "Resource": "*"
@@ -47,16 +40,16 @@ resource "aws_iam_policy" "lambda_policy" {
 resource "aws_iam_role" "lambda_role" {
   name = "app_${var.env_name}_lambda_role"
   assume_role_policy = jsonencode({
-      "Version" : "2012-10-17",
-      "Statement" : [
-        {
-          "Action" : "sts:AssumeRole",
-          "Principal" : {
-            "Service" : "lambda.amazonaws.com"
-          },
-          "Effect" : "Allow"
-        }
-      ]
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Action" : "sts:AssumeRole",
+        "Principal" : {
+          "Service" : "lambda.amazonaws.com"
+        },
+        "Effect" : "Allow"
+      }
+    ]
   })
 }
 
