@@ -45,21 +45,20 @@ resource "aws_iam_policy" "lambda_policy" {
 }
 
 resource "aws_iam_role" "lambda_role" {
-  name               = "app_${var.env_name}_lambda_role"
-  assume_role_policy = <<EOF
+  name = "app_${var.env_name}_lambda_role"
+  assume_role_policy = jsondecode(
     {
-    "Version": "2012-10-17",
-    "Statement": [
-    {
-    "Action": "sts:AssumeRole",
-    "Principal": {
-    "Service": "lambda.amazonaws.com"
-    },
-    "Effect": "Allow"
-    }
-    ]
-    }
-  EOF
+      "Version" : "2012-10-17",
+      "Statement" : [
+        {
+          "Action" : "sts:AssumeRole",
+          "Principal" : {
+            "Service" : "lambda.amazonaws.com"
+          },
+          "Effect" : "Allow"
+        }
+      ]
+  })
 }
 
 resource "aws_iam_role_policy_attachment" "delete_old_amis" {
