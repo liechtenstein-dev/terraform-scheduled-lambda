@@ -1,3 +1,8 @@
+docker/lambda/index.py
+docker/lambda/Dockerfile
+package_build/lambda
 lambda
-.terraform
-.terraform.lock.hcl
+external_module
+external_module/terraform.tfstate
+external_module/terraform.tfstate.backup
+external_module/.terraform.lock.hcl
