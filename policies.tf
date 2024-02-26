@@ -2,7 +2,7 @@ resource "aws_iam_policy" "lambda_policy" {
   name        = "${var.env_name}_lambda_policy"
   description = "${var.env_name} - Lambda Policy"
 
-  policy = <<-EOF
+  policy = jsonencode(
     {
     "Version": "2012-10-17",
     "Statement": [
@@ -16,7 +16,7 @@ resource "aws_iam_policy" "lambda_policy" {
         },
         {
         "Action": [
-          ${var.lambda_policy}
+          var.lambda_policy,
           "kms:ListAliases",
           "kms:Decrypt"
         ],
@@ -33,8 +33,7 @@ resource "aws_iam_policy" "lambda_policy" {
         "Resource": "*"
       }
     ]
-  }
-  EOF
+  })
 }
 
 resource "aws_iam_role" "lambda_role" {
