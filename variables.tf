@@ -21,9 +21,6 @@ variable "env_name" {
 variable "lambda_policy" {
   description = "The policy for the Lambda function"
   type = list(string)
-  default = <<-EOF
-    "ssm:GetParameter",
-  EOF
 }
 
 variable "function_name" {
