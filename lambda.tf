@@ -22,7 +22,6 @@ resource "aws_lambda_function" "lambda_function" {
   function_name = "${var.env_name}_${var.function_name}"
 
   role = aws_iam_role.lambda_exec_role.arn
-  memory_size = 128
   timeout = 300
 
   depends_on = [null_resource.install_python_dependencies]
