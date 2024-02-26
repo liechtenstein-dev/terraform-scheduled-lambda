@@ -15,11 +15,7 @@ resource "aws_iam_policy" "lambda_policy" {
         "Resource": "${aws_kms_alias.lambda.arn}"
         },
         {
-        "Action": [
-          var.lambda_policy,
-          "kms:ListAliases",
-          "kms:Decrypt"
-        ],
+        "Action": concat(var.lambda_policy, ["kms:ListAliases","kms:Decrypt"]),
         "Effect": "Allow",
         "Resource": "*"
         },
