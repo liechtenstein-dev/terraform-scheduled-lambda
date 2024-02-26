@@ -16,13 +16,12 @@ resource "aws_lambda_permission" "cloudwatch_call_lambda" {
   source_arn    = aws_cloudwatch_event_rule.lambda_function.arn
 }
 
-resource "aws_lambda_function" "aws_lambda_test" {
+resource "aws_lambda_function" "lambda_function" {
   handler = var.lambda_function_handler
   runtime = var.lambda_runtime_handler
   function_name = "${var.env_name}_${var.function_name}"
 
   role = aws_iam_role.lambda_exec_role.arn
-  memory_size = 128
   timeout = 300
 
   depends_on = [null_resource.install_python_dependencies]
