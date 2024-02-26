@@ -21,11 +21,3 @@ output "lambda_role_name" {
 output "lambda_role_policy_arn" {
   value = aws_iam_policy.lambda_policy.arn
 }
-
-output "cloudwatch_event_rule_arn" {
-  value = aws_cloudwatch_event_rule.lambda_function.arn
-}
-
-output "cloudwatch_event_rule_name" {
-  value = aws_cloudwatch_event_rule.lambda_function.name
-}
