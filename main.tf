@@ -16,6 +16,7 @@ resource "aws_cloudwatch_event_rule" "lambda_function" {
   name                = local.cloud_watch_event_rule_name
   description         = "${var.env_name} - CloudWatch Event Rule"
   schedule_expression = var.schedule_expression
+  state = var.state
 }
 
 resource "aws_cloudwatch_event_target" "cw_event_target" {

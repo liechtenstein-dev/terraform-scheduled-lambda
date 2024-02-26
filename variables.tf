@@ -3,6 +3,12 @@ variable "aws_region" {
   default     = "us-east-2"
 }
 
+variable "state" {
+  description = "The state of the CloudWatch Event Rule"
+  type = string
+  default     = "ENABLED"
+}
+
 variable "source_dir" {
   description = "The directory containing the Lambda function code"
   default     = "./lambda"
